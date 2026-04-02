@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Therapeutic Editorial Assessment
 
-# Run and deploy your AI Studio app
+A sophisticated, editorial-style therapeutic assessment form for holistic practitioners.
 
-This contains everything you need to run your app locally.
+## Deployment to GitHub Pages
 
-View your app in AI Studio: https://ai.studio/apps/e16c061c-7a94-434a-ace0-900fd5157c0a
+This project is configured to automatically deploy to GitHub Pages using GitHub Actions.
 
-## Run Locally
+### Steps:
+1.  **Push to `main`**: Any push to the `main` branch will trigger the `Deploy to GitHub Pages` workflow.
+2.  **Configure GitHub Pages**:
+    *   Go to your repository on GitHub.
+    *   Navigate to **Settings** > **Pages**.
+    *   Under **Build and deployment** > **Source**, select **GitHub Actions**.
+3.  **Wait for Deployment**: The workflow will build the project and deploy it to your GitHub Pages URL.
 
-**Prerequisites:**  Node.js
+## Local Development
 
+1.  `npm install`
+2.  `npm run dev`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Building for Production
+
+1.  `npm run build`
+2.  The static files will be in the `dist/` folder.

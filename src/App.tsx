@@ -50,9 +50,7 @@ export default function App() {
 
       <main className="max-w-5xl mx-auto py-12 px-4 space-y-12">
         {/* PAGE 1: CLIENTE & NUMEROLOGIA */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <section 
           className="assessment-page bg-surface-container-lowest p-12 shadow-ambient min-h-[1100px] flex flex-col page-break rounded-sm"
         >
           {/* Header */}
@@ -143,7 +141,7 @@ export default function App() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* PAGE 2: CONSCIÊNCIA, KARMA & PINÁCULOS */}
         <motion.section 

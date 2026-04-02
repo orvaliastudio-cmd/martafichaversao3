@@ -15,7 +15,6 @@ import {
   FileText,
   Check
 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 export default function App() {
   const handlePrint = () => {
@@ -144,10 +143,7 @@ export default function App() {
         </section>
 
         {/* PAGE 2: CONSCIÊNCIA, KARMA & PINÁCULOS */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+        <section 
           className="assessment-page bg-surface-container-lowest p-12 shadow-ambient min-h-[1100px] flex flex-col page-break rounded-sm"
         >
           {/* Section 4: PLANOS DE CONSCIÊNCIA */}
@@ -213,13 +209,10 @@ export default function App() {
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* PAGE 3: ANÁLISE ENERGÉTICA CHAKRAS */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+        <section 
           className="assessment-page bg-surface-container-lowest p-12 shadow-ambient min-h-[1100px] flex flex-col rounded-sm"
         >
           <div className="text-center mb-16">
@@ -272,7 +265,7 @@ export default function App() {
               <span>Página 3 de 3</span>
             </div>
           </footer>
-        </motion.section>
+        </section>
       </main>
 
       {/* Side Decoration (Hidden on small screens/print) */}

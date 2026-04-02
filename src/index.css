@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #421518;
+  --color-primary-container: #5d2a2c;
+  --color-on-primary: #ffffff;
+  
+  --color-secondary: #705959;
+  --color-secondary-container: #f8d8d8;
+  --color-on-secondary: #ffffff;
+  
+  --color-surface: #faf9f6;
+  --color-surface-container: #efeeeb;
+  --color-surface-container-low: #f4f3f1;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-outline: #857373;
+  --color-outline-variant: #d7c2c1;
+  
+  --color-on-surface: #1a1c1a;
+  --color-on-surface-variant: #524343;
+  
+  --shadow-ambient: 0px 12px 32px rgba(66, 21, 24, 0.06);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface-variant font-sans;
+  }
+}
+
+@layer utilities {
+  .writing-lines {
+    background-image: linear-gradient(to bottom, transparent 95%, #d7c2c1 95%);
+    background-size: 100% 2rem;
+    line-height: 2rem;
+  }
+  
+  .page-break {
+    page-break-after: always;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .assessment-page {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 1cm !important;
+  }
+}

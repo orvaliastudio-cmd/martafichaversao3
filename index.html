@@ -107,24 +107,28 @@
 
             <!-- Seção 1: CLIENTE -->
             <div class="mb-10">
-                <div class="flex items-center justify-between mb-5">
-                    <div class="flex items-center gap-3">
-                        <span class="text-3xl font-light text-stone-200">01</span>
-                        <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
+                    <!-- Coluna Esquerda: Título e Nome -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="text-3xl font-light text-stone-200">01</span>
+                            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Nome de Batismo</label>
+                            <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-1.5 writing-lines resize-none" rows="3"></textarea>
+                        </div>
                     </div>
-                    <div class="w-40 space-y-1">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data do Atendimento</label>
-                        <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
-                    <div class="md:col-span-2 space-y-1">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Nome de Batismo</label>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-1.5 writing-lines resize-none" rows="3"></textarea>
-                    </div>
-                    <div class="space-y-1 self-start">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data de Nascimento</label>
-                        <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1.5 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
+                    <!-- Coluna Direita: Datas Alinhadas -->
+                    <div class="flex flex-col gap-6 pt-2">
+                        <div class="space-y-1">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data do Atendimento</label>
+                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data de Nascimento</label>
+                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1.5 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,18 +139,27 @@
                     <span class="text-3xl font-light text-stone-200">02</span>
                     <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
                 </div>
-                <div class="grid grid-cols-3 gap-8 text-center">
-                    <div class="flex flex-col">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1">Alma</label>
-                        <input class="border-b-2 border-stone-100 text-center text-base font-medium py-1.5" type="text">
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Alma</label>
+                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                        </div>
+                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1">Personalidade</label>
-                        <input class="border-b-2 border-stone-100 text-center text-base font-medium py-1.5" type="text">
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Personalidade</label>
+                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                        </div>
+                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1">Destino</label>
-                        <input class="border-b-2 border-stone-100 text-center text-base font-medium py-1.5" type="text">
+                    <div class="flex flex-col space-y-3">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Destino</label>
+                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                        </div>
+                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
                     </div>
                 </div>
             </div>
@@ -163,11 +176,14 @@
                             <span>Lição de Vida</span>
                             <span class="text-stone-300 italic lowercase">observações detalhadas</span>
                         </label>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="10"></textarea>
+                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="6"></textarea>
                     </div>
                     <div class="w-1/3 space-y-2">
                         <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Ano Pessoal</label>
-                        <input class="w-full border-b-2 border-stone-100 text-base py-1.5" type="text">
+                        <input class="w-full border-b-2 border-stone-200 text-base py-1.5" placeholder="___" type="text">
+                    </div>
+                    <div class="space-y-1">
+                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic" placeholder="Observações do Ano..." type="text">
                     </div>
                 </div>
             </div>
@@ -196,6 +212,11 @@
                     <p class="text-[9px] text-primary font-black tracking-widest uppercase">Espiritual [7, 9]</p>
                     <input type="checkbox" class="w-4 h-4 accent-stone-800">
                 </div>
+            </div>
+
+            <div class="mb-10 space-y-1">
+                <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Observações dos Planos</label>
+                <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic" placeholder="Notas adicionais sobre os planos de consciência..." type="text">
             </div>
 
             <div class="mb-10">

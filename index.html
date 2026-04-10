@@ -65,20 +65,26 @@ textarea {
   outline: none;
 }
 
-/* ===== PRINT CORE (IPHONE SAFE) ===== */
+/* ===== PRINT CORE (IPHONE SAFE - ROBUST VERSION) ===== */
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
   * {
-    box-sizing: border-box !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    box-sizing: border-box !important;
   }
 
   html, body {
-    width: 210mm;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    background: white;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    overflow: visible !important;
   }
 
   .no-print {
@@ -86,55 +92,59 @@ textarea {
   }
 
   main {
-    width: 210mm;
-    margin: 0;
-    padding: 0;
+    width: 210mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
   }
 
   /* ===== PÁGINA TRAVADA ===== */
   .assessment-page {
-    width: 210mm;
-    height: 297mm;
-    min-height: 297mm;
-    max-height: 297mm;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* 🔥 ESSENCIAL PRO IPHONE */
-    page-break-inside: avoid;
-    page-break-after: always;
-    break-after: page;
-    background: white;
-    position: relative;
-    display: block;
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important; /* 🔥 ESSENCIAL PRO IPHONE */
+    position: relative !important;
+    background: white !important;
+    border: none !important;
+
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .assessment-page:last-child {
-    page-break-after: avoid;
-    break-after: avoid;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   /* ===== CONTEÚDO INTERNO CONTROLADO ===== */
   .page-inner {
-    padding: 1cm;
-    height: 297mm;
-    max-height: 297mm;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
+    width: 210mm !important;
+    height: 297mm !important;
+    padding: 1cm !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* evita estouro interno */
   .page-inner > * {
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
   }
 
-  /* footer fixo no fundo da página */
   .page-footer {
-    margin-top: auto;
-    padding-top: 8px;
-    flex-shrink: 0;
+    margin-top: auto !important;
+    padding-top: 8px !important;
+    flex-shrink: 0 !important;
   }
 
   textarea {

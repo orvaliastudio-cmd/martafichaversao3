@@ -31,22 +31,30 @@
     </script>
 
     <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
         @media print {
             .no-print { display: none !important; }
             body { background: white !important; margin: 0 !important; padding: 0 !important; }
             .assessment-page { 
                 box-shadow: none !important; 
                 margin: 0 !important;
-                padding: 30px !important;
-                width: 100% !important;
-                min-height: 100vh !important;
+                padding: 1.5cm !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
                 border: none !important;
-                page-break-after: always;
-                break-after: page;
+                page-break-after: always !important;
+                break-after: page !important;
+                position: relative;
+                overflow: hidden;
             }
             .assessment-page:last-child {
-                page-break-after: auto;
-                break-after: auto;
+                page-break-after: auto !important;
+                break-after: auto !important;
             }
         }
 
@@ -98,7 +106,7 @@
 
     <main class="max-w-3xl mx-auto py-8 px-4 space-y-8 print:space-y-0 print:py-0 print:px-0">
         <!-- PÁGINA 1: NUMEROLOGIA COMPLETA -->
-        <section class="assessment-page bg-white p-6 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
+        <section class="assessment-page bg-white p-6 shadow-md min-h-[1050px] flex flex-col rounded-sm border border-stone-100">
             <!-- Header -->
             <div class="text-center mb-6">
                 <img alt="Logo" class="h-20 mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
@@ -252,7 +260,7 @@
         </section>
 
         <!-- PÁGINA 2: CHAKRAS -->
-        <section class="assessment-page bg-white p-8 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
+        <section class="assessment-page bg-white p-8 shadow-md min-h-[1050px] flex flex-col rounded-sm border border-stone-100">
             <div class="text-center mb-8">
                 <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
                 <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>

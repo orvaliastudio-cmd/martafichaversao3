@@ -99,42 +99,38 @@ textarea {
     display: block !important;
   }
 
-  /* ===== PÁGINA TRAVADA ===== */
   .assessment-page {
-    width: 210mm !important;
-    height: 297mm !important;
-    min-height: 297mm !important;
-    max-height: 297mm !important;
+  width: 210mm;
+  height: 297mm;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  background: white;
+  display: block;
+  position: relative;
+}
 
-    margin: 0 !important;
-    padding: 0 !important;
+.assessment-page:last-child {
+  page-break-after: avoid !important;
+  break-after: avoid !important;
+}
 
-    overflow: hidden !important; /* 🔥 ESSENCIAL PRO IPHONE */
-    position: relative !important;
-    background: white !important;
-    border: none !important;
-
-    page-break-after: always !important;
-    break-after: page !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  .assessment-page:last-child {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-
-  /* ===== CONTEÚDO INTERNO CONTROLADO ===== */
   .page-inner {
-    width: 210mm !important;
-    height: 297mm !important;
-    padding: 1cm !important;
-    box-sizing: border-box !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-  }
+  padding: 1cm;
+  width: 210mm;
+  height: 297mm;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
   /* evita estouro interno */
   .page-inner > * {

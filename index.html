@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Therapeutic Editorial Assessment</title>
-<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- html2pdf: gera PDF real, funciona no iOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 tailwind.config = {
   theme: {
@@ -29,11 +29,7 @@ tailwind.config = {
 }
 </script>
 <style>
-/* ===== RESET ===== */
-@page {
-  size: A4;
-  margin: 0;
-}
+@page { size: A4; margin: 0; }
 
 body {
   background: #faf9f6;
@@ -42,7 +38,6 @@ body {
   font-size: 13px;
 }
 
-/* ===== INPUT PREMIUM ===== */
 input {
   border: none;
   border-bottom: 1px solid #cfcfcf;
@@ -51,11 +46,7 @@ input {
   padding: 4px 2px;
   font-size: 13px;
 }
-
-input:focus {
-  border-bottom: 1px solid #111;
-  outline: none;
-}
+input:focus { border-bottom: 1px solid #111; outline: none; }
 
 textarea {
   border: none;
@@ -65,102 +56,51 @@ textarea {
   outline: none;
 }
 
-/* ===== PRINT — iOS SAFE ===== */
-@media print {
-  @page {
-    size: A4 portrait;
-    margin: 0mm;
-  }
+/* Tela: cada página parece um card */
+.assessment-page {
+  background: white;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
 
+/* Footer só aparece no PDF */
+.page-footer {
+  display: none;
+}
+
+/* ===== PRINT NORMAL (PC) ===== */
+@media print {
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     box-sizing: border-box !important;
   }
-
-  html {
-    width: 210mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  body {
-    width: 210mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: white !important;
-    /* iOS: sem height no body */
-  }
-
-  .no-print {
-    display: none !important;
-  }
-
-  main {
-    width: 210mm !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: block !important;
-  }
-
-  /* Cada section = 1 página exata */
+  html, body { width: 210mm !important; margin: 0 !important; padding: 0 !important; background: white !important; }
+  .no-print { display: none !important; }
+  main { width: 210mm !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
   .assessment-page {
-    width: 210mm !important;
-    height: 297mm !important;
-    max-height: 297mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    page-break-after: always !important;
-    break-after: page !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    background: white !important;
-    display: block !important;
-    position: relative !important;
+    width: 210mm !important; height: 297mm !important; max-height: 297mm !important;
+    margin: 0 !important; padding: 0 !important; overflow: hidden !important;
+    page-break-after: always !important; break-after: page !important;
+    border-radius: 0 !important; box-shadow: none !important; background: white !important;
+    display: block !important; position: relative !important;
   }
-
-  .assessment-page:last-child {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-
-  /* Caixa interna travada em 297mm */
+  .assessment-page:last-child { page-break-after: avoid !important; break-after: avoid !important; }
   .page-inner {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 210mm !important;
-    height: 297mm !important;
-    padding: 1cm !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
-    box-sizing: border-box !important;
+    position: absolute !important; top: 0 !important; left: 0 !important;
+    width: 210mm !important; height: 297mm !important;
+    padding: 1cm !important; overflow: hidden !important;
+    display: flex !important; flex-direction: column !important;
   }
-
-  /* conteúdo cresce, footer gruda no fundo */
-  .print-content {
-    flex: 1 1 auto !important;
-    overflow: hidden !important;
-  }
-
-  .print-footer {
-    flex-shrink: 0 !important;
-    padding-top: 8px !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    font-size: 7px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
+  .page-footer {
+    display: flex !important; justify-content: space-between !important;
+    margin-top: auto !important; padding-top: 8px !important;
+    font-size: 7px !important; font-weight: 700 !important;
+    text-transform: uppercase !important; letter-spacing: 0.1em !important;
     color: #d3ccc5 !important;
   }
-
-  textarea {
-    height: 90px !important;
-  }
+  textarea { height: 90px !important; }
 }
 </style>
 </head>
@@ -169,296 +109,337 @@ textarea {
 <!-- TopAppBar -->
 <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm no-print">
   <div class="flex justify-between items-center w-full px-6 py-3 max-w-3xl mx-auto">
-    <div class="flex items-center gap-3">
-      <span class="tracking-[0.1em] font-extrabold uppercase text-primary text-lg">
-        FICHA ATENDIMENTO MARTA
-      </span>
-    </div>
-    <div class="flex items-center gap-4">
-      <button onclick="window.print()" class="px-4 py-1.5 bg-primary text-white hover:opacity-90 transition-all rounded-lg text-xs font-bold uppercase tracking-wider">
-        Gerar PDF
-      </button>
-    </div>
+    <span class="tracking-[0.1em] font-extrabold uppercase text-primary text-lg">FICHA ATENDIMENTO MARTA</span>
+    <button id="btnPDF" class="px-4 py-1.5 bg-primary text-white hover:opacity-90 transition-all rounded-lg text-xs font-bold uppercase tracking-wider">
+      Gerar PDF
+    </button>
   </div>
 </header>
 
-<main class="max-w-3xl mx-auto py-8 px-4 print:py-0 print:px-0">
+<main id="conteudo-pdf" class="max-w-3xl mx-auto py-8 px-4">
 
-  <!-- PÁGINA 1: NUMEROLOGIA COMPLETA -->
+  <!-- PÁGINA 1 -->
   <section class="assessment-page">
-    <div class="page-inner">
-      <div class="print-content">
+    <div class="page-inner p-8 flex flex-col" style="min-height:600px;">
 
-        <!-- Header -->
-        <div class="text-center mb-6">
-          <img alt="Logo" class="h-[92px] mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
-          <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-1"></div>
-        </div>
+      <!-- Header -->
+      <div class="text-center mb-6">
+        <img alt="Logo" class="h-[92px] mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
+        <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-1"></div>
+      </div>
 
-        <!-- Seção 1: CLIENTE -->
-        <div class="mb-6">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
-            <div class="md:col-span-2">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="text-2xl font-light text-rose-700">01</span>
-                <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Nome de Batismo</label>
-                <input class="w-full bg-transparent px-0 py-1 text-sm font-medium outline-none" type="text">
-                <div class="mt-2 relative bg-stone-50/30">
-                  <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Cálculos</span>
-                  <textarea style="border: 2px dashed #d3ccc5 !important;" class="w-full rounded-lg p-3 pt-6 text-sm bg-transparent outline-none"></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col gap-4 pt-10">
-              <div class="space-y-1">
-                <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data do Atendimento</label>
-                <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
-              </div>
-              <div class="space-y-1">
-                <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data de Nascimento</label>
-                <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Seção 2: NUMEROLOGIA & LEITURA -->
-        <div class="grid grid-cols-2 gap-8 mb-6">
-          <div>
+      <!-- 01 CLIENTE -->
+      <div class="mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
+          <div class="md:col-span-2">
             <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl font-light text-rose-700">02</span>
-              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
+              <span class="text-2xl font-light text-rose-700">01</span>
+              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
             </div>
-            <div class="grid grid-cols-3 gap-4">
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Alma</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Pers.</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Destino</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            <div class="space-y-1">
+              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Nome de Batismo</label>
+              <input class="w-full bg-transparent px-0 py-1 text-sm font-medium outline-none" type="text">
+              <div class="mt-2 relative bg-stone-50/30">
+                <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Cálculos</span>
+                <textarea style="border: 2px dashed #d3ccc5 !important;" class="w-full rounded-lg p-3 pt-6 text-sm bg-transparent outline-none"></textarea>
               </div>
             </div>
           </div>
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl font-light text-rose-700">03</span>
-              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
+          <div class="flex flex-col gap-4 pt-10">
+            <div class="space-y-1">
+              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data do Atendimento</label>
+              <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
             </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Lição de Vida</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Ano Pessoal</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
+            <div class="space-y-1">
+              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data de Nascimento</label>
+              <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Seção 4: PLANOS DE CONSCIÊNCIA -->
-        <div class="mb-6">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">04</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Planos de Consciência</h2>
-          </div>
-          <div class="grid grid-cols-4 gap-3">
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Mental [1, 8]</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Emoc. [2, 3, 6]</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Físico [4, 5]</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Espirit. [7, 9]</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-          </div>
-        </div>
-
-        <!-- Seção 5 & 6: KARMA/DARMA & PINÁCULOS -->
-        <div class="space-y-6 mb-6">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl font-light text-rose-700">05</span>
-              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Karma</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">Darma</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl font-light text-rose-700">06</span>
-              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
-            </div>
-            <div class="grid grid-cols-4 gap-2">
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">1º</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">2º</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">3º</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-              <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-                <p class="text-[11px] text-primary font-black tracking-widest uppercase">4º</p>
-                <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Seção 07: ANOTAÇÕES GERAIS -->
+      <!-- 02 + 03 -->
+      <div class="grid grid-cols-2 gap-8 mb-6">
         <div>
           <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">07</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Anotações Gerais</h2>
+            <span class="text-2xl font-light text-rose-700">02</span>
+            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
           </div>
-          <div class="relative bg-stone-50/30">
-            <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Anotações...</span>
-            <textarea class="w-full p-3 pt-6 text-sm bg-transparent outline-none"></textarea>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Alma</p>
+              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            </div>
+            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Pers.</p>
+              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            </div>
+            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Destino</p>
+              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            </div>
           </div>
         </div>
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-2xl font-light text-rose-700">03</span>
+            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Lição de Vida</p>
+              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            </div>
+            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Ano Pessoal</p>
+              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+            </div>
+          </div>
+        </div>
+      </div>
 
-      </div><!-- /print-content -->
-      <div class="print-footer">
+      <!-- 04 PLANOS -->
+      <div class="mb-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl font-light text-rose-700">04</span>
+          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Planos de Consciência</h2>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Mental [1, 8]</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Emoc. [2, 3, 6]</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Físico [4, 5]</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Espirit. [7, 9]</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 KARMA -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl font-light text-rose-700">05</span>
+          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Karma</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Darma</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 PINÁCULOS -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl font-light text-rose-700">06</span>
+          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">1º</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">2º</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">3º</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+            <p class="text-[11px] text-primary font-black tracking-widest uppercase">4º</p>
+            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 ANOTAÇÕES -->
+      <div class="mb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl font-light text-rose-700">07</span>
+          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Anotações Gerais</h2>
+        </div>
+        <div class="relative bg-stone-50/30">
+          <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Anotações...</span>
+          <textarea class="w-full p-3 pt-6 text-sm bg-transparent outline-none" style="min-height:80px;"></textarea>
+        </div>
+      </div>
+
+      <div class="page-footer mt-auto pt-2 text-[7px] font-bold uppercase text-stone-300 flex justify-between">
         <span>Confidencial</span><span>Página 1 de 2</span>
       </div>
-    </div><!-- /page-inner -->
+    </div>
   </section>
 
   <!-- PÁGINA 2: CHAKRAS -->
   <section class="assessment-page">
-    <div class="page-inner">
-      <div class="print-content">
+    <div class="page-inner p-8 flex flex-col" style="min-height:600px;">
 
-        <div class="text-center mb-8">
-          <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
-          <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>
+      <div class="text-center mb-8">
+        <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
+        <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" class="w-10 h-10 object-contain" alt="Coronário">
+            <span class="text-xs font-black uppercase tracking-widest">Coronário</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Em Desenv.</label>
+          </div>
         </div>
-
-        <div class="space-y-4">
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" class="w-10 h-10 object-contain" alt="Coronário">
-              <span class="text-xs font-black uppercase tracking-widest">Coronário</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Em Desenv.</label>
-            </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" class="w-10 h-10 object-contain" alt="Frontal">
+            <span class="text-xs font-black uppercase tracking-widest">Frontal</span>
           </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" class="w-10 h-10 object-contain" alt="Frontal">
-              <span class="text-xs font-black uppercase tracking-widest">Frontal</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Em Desenv.</label>
-            </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Em Desenv.</label>
           </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" class="w-10 h-10 object-contain" alt="Laríngeo">
-              <span class="text-xs font-black uppercase tracking-widest">Laríngeo</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Em Desenv.</label>
-            </div>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" class="w-10 h-10 object-contain" alt="Cardíaco">
-              <span class="text-xs font-black uppercase tracking-widest">Cardíaco</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Em Desenv.</label>
-            </div>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" class="w-10 h-10 object-contain" alt="Plexo Solar">
-              <span class="text-xs font-black uppercase tracking-widest">Plexo Solar</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Em Desenv.</label>
-            </div>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" class="w-10 h-10 object-contain" alt="Esplênico">
-              <span class="text-xs font-black uppercase tracking-widest">Esplênico</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Em Desenv.</label>
-            </div>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-            <div class="flex items-center gap-3 mb-3">
-              <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" class="w-10 h-10 object-contain" alt="Básico">
-              <span class="text-xs font-black uppercase tracking-widest">Básico</span>
-            </div>
-            <div class="grid grid-cols-3 gap-4">
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Equilibrado</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Desequilíbrio</label>
-              <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Em Desenv.</label>
-            </div>
-          </div>
-
         </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" class="w-10 h-10 object-contain" alt="Laríngeo">
+            <span class="text-xs font-black uppercase tracking-widest">Laríngeo</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Em Desenv.</label>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" class="w-10 h-10 object-contain" alt="Cardíaco">
+            <span class="text-xs font-black uppercase tracking-widest">Cardíaco</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Em Desenv.</label>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" class="w-10 h-10 object-contain" alt="Plexo Solar">
+            <span class="text-xs font-black uppercase tracking-widest">Plexo Solar</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Em Desenv.</label>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" class="w-10 h-10 object-contain" alt="Esplênico">
+            <span class="text-xs font-black uppercase tracking-widest">Esplênico</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Em Desenv.</label>
+          </div>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+          <div class="flex items-center gap-3 mb-3">
+            <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" class="w-10 h-10 object-contain" alt="Básico">
+            <span class="text-xs font-black uppercase tracking-widest">Básico</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Equilibrado</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Desequilíbrio</label>
+            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Em Desenv.</label>
+          </div>
+        </div>
+      </div>
 
-      </div><!-- /print-content -->
-      <div class="print-footer">
+      <div class="page-footer mt-auto pt-2 text-[7px] font-bold uppercase text-stone-300 flex justify-between">
         <span>Confidencial</span><span>Página 2 de 2</span>
       </div>
-    </div><!-- /page-inner -->
+    </div>
   </section>
 
 </main>
+
+<script>
+document.getElementById('btnPDF').addEventListener('click', function() {
+  const btn = this;
+  btn.textContent = 'Gerando...';
+  btn.disabled = true;
+
+  // Pega as duas páginas separadamente
+  const paginas = document.querySelectorAll('.assessment-page');
+
+  const opt = {
+    margin: 0,
+    filename: 'ficha-marta.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      width: 794,   // 210mm em 96dpi
+      windowWidth: 794
+    },
+    jsPDF: {
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait'
+    },
+    pagebreak: { mode: 'avoid-all' }
+  };
+
+  // Gera página 1 + página 2 como PDF de 2 páginas
+  const worker = html2pdf().set(opt).from(paginas[0]);
+  worker
+    .toPdf()
+    .get('pdf')
+    .then(function(pdf) {
+      pdf.addPage();
+      return html2pdf().set(opt).from(paginas[1]).toCanvas().then(function(canvas) {
+        const imgData = canvas.toDataURL('image/jpeg', 0.98);
+        const w = pdf.internal.pageSize.getWidth();
+        const h = pdf.internal.pageSize.getHeight();
+        pdf.setPage(2);
+        pdf.addImage(imgData, 'JPEG', 0, 0, w, h);
+        return pdf;
+      });
+    })
+    .then(function(pdf) {
+      pdf.save('ficha-marta.pdf');
+      btn.textContent = 'Gerar PDF';
+      btn.disabled = false;
+    })
+    .catch(function() {
+      // fallback para print nativo se html2pdf falhar
+      window.print();
+      btn.textContent = 'Gerar PDF';
+      btn.disabled = false;
+    });
+});
+</script>
 </body>
 </html>

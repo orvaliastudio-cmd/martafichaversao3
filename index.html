@@ -97,289 +97,263 @@
     </header>
 
     <main class="max-w-3xl mx-auto py-8 px-4 space-y-8 print:space-y-0 print:py-0 print:px-0">
-        <!-- PÁGINA 1: CLIENTE & NUMEROLOGIA & LEITURA -->
+        <!-- PÁGINA 1: NUMEROLOGIA COMPLETA -->
         <section class="assessment-page bg-white p-6 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
             <!-- Header -->
-            <div class="text-center mb-10">
-                <img alt="Logo" class="h-32 mx-auto object-contain mb-4" src="https://lh3.googleusercontent.com/aida/ADBb0ujSQuuqBdb9oCSyu0hRUD-s50Zt_OzkrnrZZQfrfflPo4vQxXhP9kVJrhZv_O9OuvgXbgh1XR_ET0J4JinTNlHledHf_F4gkofNZey_pppAmo0UJlolb7qy3StXXSMVvP5eaDTZgv1oxNMJJehf1IkKj5X0NNW4IuOtDx5Tt2dXWBH7erc7AxzUGvKpo8PGF9HJfSktcIWnZaGIBx4UH4B3RSN02FYpGxQGoB8uH4T_Ptf8N_9b-PUKj4Cc-DwgOxloq9tA659meZo">
-                <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-2"></div>
+            <div class="text-center mb-6">
+                <img alt="Logo" class="h-20 mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
+                <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-1"></div>
             </div>
 
             <!-- Seção 1: CLIENTE -->
-            <div class="mb-10">
+            <div class="mb-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
-                    <!-- Coluna Esquerda: Título e Nome -->
                     <div class="md:col-span-2">
-                        <div class="flex items-center gap-3 mb-5">
-                            <span class="text-3xl font-light text-stone-200">01</span>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-2xl font-light text-stone-200">01</span>
                             <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
                         </div>
                         <div class="space-y-1">
                             <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Nome de Batismo</label>
-                            <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-1.5 writing-lines resize-none" rows="3"></textarea>
+                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm font-medium" type="text">
+                            <!-- Espaço de 3cm para contas -->
+                            <div class="h-[113px] border-2 border-dashed border-stone-100 rounded-lg mt-2 relative">
+                                <span class="absolute top-1 left-2 text-[8px] text-stone-400 uppercase tracking-widest font-bold">Cálculos</span>
+                            </div>
                         </div>
                     </div>
-                    <!-- Coluna Direita: Datas Alinhadas -->
-                    <div class="flex flex-col gap-6 pt-2">
+                    <div class="flex flex-col gap-4 pt-10">
                         <div class="space-y-1">
                             <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data do Atendimento</label>
-                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
+                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm tracking-[0.2em]" placeholder="___ /___ /_____ " type="text">
                         </div>
                         <div class="space-y-1">
                             <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Data de Nascimento</label>
-                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1.5 text-sm tracking-[0.3em]" placeholder="___ /___ /_____ " type="text">
+                            <input class="w-full border-b-2 border-stone-200 bg-transparent px-0 py-1 text-sm tracking-[0.2em]" placeholder="___ /___ /_____ " type="text">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Seção 2: NUMEROLOGIA -->
-            <div class="mb-10">
-                <div class="flex items-center gap-3 mb-5">
-                    <span class="text-3xl font-light text-stone-200">02</span>
-                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
-                </div>
-                <div class="grid grid-cols-3 gap-8">
-                    <div class="flex flex-col space-y-3">
+            <!-- Seção 2: NUMEROLOGIA & LEITURA -->
+            <div class="grid grid-cols-2 gap-8 mb-6">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl font-light text-stone-200">02</span>
+                        <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
                         <div class="flex flex-col">
                             <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Alma</label>
-                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
                         </div>
-                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
-                    </div>
-                    <div class="flex flex-col space-y-3">
                         <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Personalidade</label>
-                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Pers.</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
                         </div>
-                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
-                    </div>
-                    <div class="flex flex-col space-y-3">
                         <div class="flex flex-col">
                             <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Destino</label>
-                            <input class="border-b-2 border-stone-200 text-center text-base font-medium py-1.5" type="text">
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
                         </div>
-                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic text-center" placeholder="Observações..." type="text">
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl font-light text-stone-200">03</span>
+                        <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Lição de Vida</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Ano Pessoal</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Seção 3: LEITURA -->
-            <div class="flex-grow">
-                <div class="flex items-center gap-3 mb-5">
-                    <span class="text-3xl font-light text-stone-200">03</span>
-                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
+            <!-- Seção 4: PLANOS DE CONSCIÊNCIA -->
+            <div class="mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl font-light text-stone-200">04</span>
+                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Planos de Consciência</h2>
                 </div>
-                <div class="space-y-6">
-                    <div class="space-y-2">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest flex justify-between">
-                            <span>Lição de Vida</span>
-                            <span class="text-stone-300 italic lowercase">observações detalhadas</span>
-                        </label>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="6"></textarea>
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="bg-stone-50 p-2 rounded-lg border border-stone-100 flex flex-col items-center gap-1">
+                        <p class="text-[11px] text-primary font-black tracking-widest uppercase">Mental [1, 8]</p>
+                        <input type="text" class="w-full border-b border-stone-300 text-center text-xs font-bold bg-transparent outline-none">
                     </div>
-                    <div class="w-1/3 space-y-2">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Ano Pessoal</label>
-                        <input class="w-full border-b-2 border-stone-200 text-base py-1.5" placeholder="___" type="text">
+                    <div class="bg-stone-50 p-2 rounded-lg border border-stone-100 flex flex-col items-center gap-1">
+                        <p class="text-[11px] text-primary font-black tracking-widest uppercase">Emoc. [2, 3, 6]</p>
+                        <input type="text" class="w-full border-b border-stone-300 text-center text-xs font-bold bg-transparent outline-none">
                     </div>
-                    <div class="space-y-1">
-                        <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic" placeholder="Observações do Ano..." type="text">
+                    <div class="bg-stone-50 p-2 rounded-lg border border-stone-100 flex flex-col items-center gap-1">
+                        <p class="text-[11px] text-primary font-black tracking-widest uppercase">Físico [4, 5]</p>
+                        <input type="text" class="w-full border-b border-stone-300 text-center text-xs font-bold bg-transparent outline-none">
+                    </div>
+                    <div class="bg-stone-50 p-2 rounded-lg border border-stone-100 flex flex-col items-center gap-1">
+                        <p class="text-[11px] text-primary font-black tracking-widest uppercase">Espirit. [7, 9]</p>
+                        <input type="text" class="w-full border-b border-stone-300 text-center text-xs font-bold bg-transparent outline-none">
                     </div>
                 </div>
             </div>
+
+            <!-- Seção 5 & 6: KARMA/DARMA & PINÁCULOS -->
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl font-light text-stone-200">05</span>
+                        <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Karma</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest mb-1 text-center">Darma</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-base font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl font-light text-stone-200">06</span>
+                        <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="flex flex-col">
+                            <label class="text-[8px] text-stone-400 font-bold uppercase mb-1 text-center">1º</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-sm font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[8px] text-stone-400 font-bold uppercase mb-1 text-center">2º</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-sm font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[8px] text-stone-400 font-bold uppercase mb-1 text-center">3º</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-sm font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[8px] text-stone-400 font-bold uppercase mb-1 text-center">4º</label>
+                            <input class="border-2 border-stone-200 rounded-md text-center text-sm font-bold py-2 bg-stone-50" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <footer class="mt-auto pt-4 text-[7px] font-bold uppercase text-stone-300 flex justify-between">
                 <span>Confidencial</span>
-                <span>Página 1 de 3</span>
+                <span>Página 1 de 2</span>
             </footer>
         </section>
 
-        <!-- PÁGINA 2: CONSCIÊNCIA, KARMA & PINÁCULOS -->
-        <section class="assessment-page bg-white p-6 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
-            <div class="flex items-center gap-3 mb-8">
-                <span class="text-3xl font-light text-stone-200">04</span>
-                <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Planos de Consciência</h2>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-                <div class="bg-stone-50 p-4 rounded-xl space-y-3">
-                    <p class="text-[9px] text-primary font-black tracking-widest uppercase">Mental [1, 8]</p>
-                    <input type="checkbox" class="w-4 h-4 accent-stone-800">
-                </div>
-                <div class="bg-stone-50 p-4 rounded-xl space-y-3">
-                    <p class="text-[9px] text-primary font-black tracking-widest uppercase">Emocional [2, 3, 6]</p>
-                    <input type="checkbox" class="w-4 h-4 accent-stone-800">
-                </div>
-                <div class="bg-stone-50 p-4 rounded-xl space-y-3">
-                    <p class="text-[9px] text-primary font-black tracking-widest uppercase">Físico [4, 5]</p>
-                    <input type="checkbox" class="w-4 h-4 accent-stone-800">
-                </div>
-                <div class="bg-stone-50 p-4 rounded-xl space-y-3">
-                    <p class="text-[9px] text-primary font-black tracking-widest uppercase">Espiritual [7, 9]</p>
-                    <input type="checkbox" class="w-4 h-4 accent-stone-800">
-                </div>
-            </div>
-
-            <div class="mb-10 space-y-1">
-                <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Observações dos Planos</label>
-                <input class="w-full border-b-2 border-stone-100 text-[10px] py-1 italic" placeholder="Notas adicionais sobre os planos de consciência..." type="text">
-            </div>
-
-            <div class="mb-10">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-3xl font-light text-stone-200">05</span>
-                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Karma</label>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="2"></textarea>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[9px] text-stone-400 font-bold uppercase tracking-widest">Darma</label>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="2"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-grow">
-                <div class="flex items-center gap-3 mb-8">
-                    <span class="text-3xl font-light text-stone-200">06</span>
-                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <span class="text-[9px] text-stone-400 font-bold uppercase mb-1 block">1º Pináculo</span>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="5"></textarea>
-                    </div>
-                    <div class="space-y-2">
-                        <span class="text-[9px] text-stone-400 font-bold uppercase mb-1 block">2º Pináculo</span>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="5"></textarea>
-                    </div>
-                    <div class="space-y-2">
-                        <span class="text-[9px] text-stone-400 font-bold uppercase mb-1 block">3º Pináculo</span>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="5"></textarea>
-                    </div>
-                    <div class="space-y-2">
-                        <span class="text-[9px] text-stone-400 font-bold uppercase mb-1 block">4º Pináculo</span>
-                        <textarea class="w-full border-b-2 border-stone-100 bg-transparent px-0 py-2 writing-lines resize-none" rows="5"></textarea>
-                    </div>
-                </div>
-            </div>
-            <footer class="mt-auto pt-4 text-[7px] font-bold uppercase text-stone-300 flex justify-between">
-                <span>Confidencial</span>
-                <span>Página 2 de 3</span>
-            </footer>
-        </section>
-
-        <!-- PÁGINA 3: CHAKRAS -->
-        <section class="assessment-page bg-white p-6 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
-            <div class="text-center mb-6">
+        <!-- PÁGINA 2: CHAKRAS -->
+        <section class="assessment-page bg-white p-8 shadow-md min-h-[1100px] flex flex-col rounded-sm border border-stone-100">
+            <div class="text-center mb-8">
                 <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
                 <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>
             </div>
 
-            <div class="space-y-2">
+            <div class="space-y-4">
                 <!-- Coronário -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" class="w-8 h-8 object-contain" alt="Coronário">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Coronário</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" class="w-10 h-10 object-contain" alt="Coronário">
+                        <span class="text-xs font-black uppercase tracking-widest">Coronário</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c1"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c1"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c1"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Frontal -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" class="w-8 h-8 object-contain" alt="Frontal">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Frontal</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" class="w-10 h-10 object-contain" alt="Frontal">
+                        <span class="text-xs font-black uppercase tracking-widest">Frontal</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c2"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c2"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c2"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Laríngeo -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" class="w-8 h-8 object-contain" alt="Laríngeo">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Laríngeo</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" class="w-10 h-10 object-contain" alt="Laríngeo">
+                        <span class="text-xs font-black uppercase tracking-widest">Laríngeo</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c3"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c3"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c3"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Cardíaco -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" class="w-8 h-8 object-contain" alt="Cardíaco">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Cardíaco</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" class="w-10 h-10 object-contain" alt="Cardíaco">
+                        <span class="text-xs font-black uppercase tracking-widest">Cardíaco</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c4"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c4"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c4"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Plexo Solar -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" class="w-8 h-8 object-contain" alt="Plexo Solar">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Plexo Solar</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" class="w-10 h-10 object-contain" alt="Plexo Solar">
+                        <span class="text-xs font-black uppercase tracking-widest">Plexo Solar</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c5"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c5"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c5"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Esplênico -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" class="w-8 h-8 object-contain" alt="Esplênico">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Esplênico</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" class="w-10 h-10 object-contain" alt="Esplênico">
+                        <span class="text-xs font-black uppercase tracking-widest">Esplênico</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c6"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c6"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c6"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
 
                 <!-- Básico -->
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <div class="flex items-center gap-3 mb-1">
-                        <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" class="w-8 h-8 object-contain" alt="Básico">
-                        <span class="text-[10px] font-black uppercase tracking-widest">Básico</span>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" class="w-10 h-10 object-contain" alt="Básico">
+                        <span class="text-xs font-black uppercase tracking-widest">Básico</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mb-1">
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c7"> Equilibrado</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c7"> Desequilíbrio</label>
-                        <label class="flex items-center gap-2 text-[9px] uppercase font-bold"><input type="radio" name="c7"> Em Desenv.</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Equilibrado</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Desequilíbrio</label>
+                        <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Em Desenv.</label>
                     </div>
-                    <input class="w-full border-b-2 border-stone-200 text-[10px] py-1 italic" placeholder="Observações..." type="text">
                 </div>
             </div>
 
             <footer class="mt-auto pt-4 text-[7px] font-bold uppercase text-stone-300 flex justify-between">
                 <span>Confidencial</span>
-                <span>Página 3 de 3</span>
+                <span>Página 2 de 2</span>
             </footer>
         </section>
     </main>

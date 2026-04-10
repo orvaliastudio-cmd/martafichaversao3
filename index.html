@@ -3,73 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Therapeutic Editorial Assessment</title>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Fonts -->
+<title>Ficha Atendimento — Marta Ana Chiconato</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#4a3728',
-        'primary-container': '#f5f1ee',
-        surface: '#faf9f6',
-        'surface-container-lowest': '#ffffff',
-        'surface-container-low': '#f3f0eb',
-        outline: '#857365',
-        'outline-variant': '#d3ccc5',
-      },
-      fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-      },
-    }
-  }
-}
-</script>
 <style>
-/* ===== RESET ===== */
-@page {
-  size: A4;
-  margin: 0;
+/* ===== VARIÁVEIS ===== */
+:root {
+  --primary: #4a3728;
+  --stone-50: #faf9f6;
+  --stone-100: #f3f0eb;
+  --stone-200: #e7e3dc;
+  --stone-300: #d3ccc5;
+  --stone-400: #b5aca3;
+  --stone-500: #857365;
 }
 
+/* ===== BASE ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  background: #faf9f6;
+  background: var(--stone-50);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #4a3728;
+  color: var(--primary);
   font-size: 13px;
 }
 
-/* ===== INPUT PREMIUM ===== */
-input {
+/* ===== HEADER (SÓ NA TELA) ===== */
+.topbar {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar-title {
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.btn-print {
+  background: var(--primary);
+  color: white;
   border: none;
-  border-bottom: 1px solid #cfcfcf;
+  cursor: pointer;
+  padding: 7px 18px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+.btn-print:hover { opacity: 0.85; }
+
+/* ===== LAYOUT TELA ===== */
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* ===== PÁGINA (TELA) ===== */
+.page {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(74,55,40,0.08);
+  margin-bottom: 32px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TIPOGRAFIA SEÇÕES ===== */
+.section { margin-bottom: 22px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.section-num {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--stone-200);
+  line-height: 1;
+}
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* ===== INPUTS ===== */
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid var(--stone-300);
   background: transparent;
   width: 100%;
   padding: 4px 2px;
   font-size: 13px;
-}
-
-input:focus {
-  border-bottom: 1px solid #111;
+  font-family: inherit;
+  color: var(--primary);
   outline: none;
 }
+input[type="text"]:focus { border-bottom-color: var(--primary); }
 
 textarea {
-  border: none;
+  border: 2px dashed var(--stone-300);
   background: transparent;
   width: 100%;
   resize: none;
   outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--primary);
+  border-radius: 8px;
+  padding: 22px 12px 8px 12px;
+  min-height: 80px;
 }
 
-/* ===== PRINT CORE (IPHONE SAFE - ROBUST VERSION) ===== */
+/* ===== CAMPO COM LABEL ===== */
+.field { display: flex; flex-direction: column; gap: 3px; }
+.field label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone-500);
+}
+
+/* ===== CARD (caixinhas) ===== */
+.card {
+  background: var(--stone-50);
+  border: 1px solid var(--stone-200);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.card-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-align: center;
+}
+.card input[type="text"] {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ===== GRIDS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+.grid-cliente { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+/* ===== TEXTAREA COM LABEL FLOAT ===== */
+.textarea-wrap { position: relative; }
+.textarea-wrap .float-label {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone-400);
+  pointer-events: none;
+}
+
+/* ===== LOGO ===== */
+.logo-wrap { text-align: center; margin-bottom: 20px; }
+.logo-wrap img { height: 80px; object-fit: contain; }
+.logo-divider { width: 60px; height: 1px; background: var(--stone-200); margin: 8px auto 0; }
+
+/* ===== CHAKRA CARD ===== */
+.chakra-card {
+  background: var(--stone-50);
+  border: 1px solid var(--stone-100);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+.chakra-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.chakra-header img { width: 36px; height: 36px; object-fit: contain; }
+.chakra-name { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.chakra-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.chakra-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.chakra-options input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ===== CHAKRA PAGE TITLE ===== */
+.chakra-page-title { text-align: center; margin-bottom: 20px; }
+.chakra-page-title h2 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.chakra-page-title .divider {
+  width: 80px; height: 3px;
+  background: var(--stone-100);
+  margin: 10px auto 0; border-radius: 2px;
+}
+
+/* ===== FOOTER DA PÁGINA ===== */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--stone-300);
+}
+
+.datas-col { display: flex; flex-direction: column; gap: 16px; padding-top: 24px; }
+.page-content { flex: 1 1 auto; }
+
+/* =====================================================
+   PRINT — REGRAS EXCLUSIVAS PARA IMPRESSÃO / PDF
+   ===================================================== */
 @media print {
+
   @page {
-    size: A4;
-    margin: 0;
+    size: A4 portrait;
+    margin: 0mm;
   }
 
   * {
@@ -80,383 +268,295 @@ textarea {
 
   html, body {
     width: 210mm !important;
-    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     background: white !important;
-    overflow: visible !important;
   }
 
-  .no-print {
-    display: none !important;
-  }
+  .topbar { display: none !important; }
 
   main {
     width: 210mm !important;
-    max-width: none !important;
+    max-width: 210mm !important;
     margin: 0 !important;
     padding: 0 !important;
-    display: block !important;
   }
 
-  /* ===== PÁGINA TRAVADA ===== */
-  .assessment-page {
+  /* Cada .page = exatamente 1 página A4, sem overflow */
+  .page {
     width: 210mm !important;
     height: 297mm !important;
-    min-height: 297mm !important;
+    min-height: unset !important;
     max-height: 297mm !important;
-
     margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: hidden !important; /* 🔥 ESSENCIAL PRO IPHONE */
-    position: relative !important;
+    padding: 15mm 18mm 12mm 18mm !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     background: white !important;
-    border: none !important;
-
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    /* Quebra de página */
     page-break-after: always !important;
     break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  .assessment-page:last-child {
+  .page:last-child {
     page-break-after: avoid !important;
     break-after: avoid !important;
   }
 
-  /* ===== CONTEÚDO INTERNO CONTROLADO ===== */
-  .page-inner {
-    width: 210mm !important;
-    height: 297mm !important;
-    padding: 1cm !important;
-    box-sizing: border-box !important;
+  .page-content { flex: 1 1 auto; overflow: hidden; }
+  .page-footer  { flex-shrink: 0; margin-top: auto; }
 
-    display: flex !important;
-    flex-direction: column !important;
-  }
+  textarea { min-height: 64px !important; font-size: 11px !important; }
+  input[type="text"] { font-size: 11px !important; }
 
-  /* evita estouro interno */
-  .page-inner > * {
-    flex-shrink: 0 !important;
-  }
-
-  .page-footer {
-    margin-top: auto !important;
-    padding-top: 8px !important;
-    flex-shrink: 0 !important;
-  }
-
-  textarea {
-    height: 95px !important;
-  }
+  .chakra-card { padding: 7px 12px; margin-bottom: 5px; }
+  .chakra-header img { width: 26px; height: 26px; }
+  .chakra-name  { font-size: 10px; }
+  .chakra-options label { font-size: 9px; }
+  .logo-wrap img { height: 60px; }
+  .logo-wrap { margin-bottom: 14px; }
+  .chakra-page-title h2 { font-size: 13px; }
+  .chakra-page-title { margin-bottom: 14px; }
+  .section { margin-bottom: 14px; }
+  .section-num { font-size: 16px; }
 }
 </style>
 </head>
-<body class="selection:bg-stone-200 selection:text-stone-900">
+<body>
 
-<!-- TopAppBar -->
-<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm no-print">
-  <div class="flex justify-between items-center w-full px-6 py-3 max-w-3xl mx-auto">
-    <div class="flex items-center gap-3">
-      <span class="tracking-[0.1em] font-extrabold uppercase text-primary text-lg">
-        FICHA ATENDIMENTO MARTA
-      </span>
-    </div>
-    <div class="flex items-center gap-4">
-      <button onclick="window.print()" class="px-4 py-1.5 bg-primary text-white hover:opacity-90 transition-all rounded-lg text-xs font-bold uppercase tracking-wider">
-        Gerar PDF
-      </button>
-    </div>
-  </div>
+<header class="topbar">
+  <span class="topbar-title">Ficha Atendimento Marta</span>
+  <button class="btn-print" onclick="window.print()">Gerar PDF</button>
 </header>
 
-<main class="max-w-3xl mx-auto py-8 px-4 print:py-0 print:px-0">
+<main>
 
-  <!-- PÁGINA 1: NUMEROLOGIA COMPLETA -->
-  <section class="assessment-page">
-    <div class="page-inner">
+  <!-- ===== PÁGINA 1 ===== -->
+  <div class="page">
+    <div class="page-content">
 
-      <!-- Header -->
-      <div class="text-center mb-6">
-        <img alt="Logo" class="h-[92px] mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
-        <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-1"></div>
+      <div class="logo-wrap">
+        <img src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" alt="Logo">
+        <div class="logo-divider"></div>
       </div>
 
-      <!-- Seção 1: CLIENTE -->
-      <div class="mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
-          <div class="md:col-span-2">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl font-light text-rose-700">01</span>
-              <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Cliente</h2>
+      <!-- 01 CLIENTE -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <span class="section-title">Cliente</span>
+        </div>
+        <div class="grid-cliente">
+          <div>
+            <div class="field" style="margin-bottom:10px;">
+              <label>Nome de Batismo</label>
+              <input type="text">
             </div>
-            <div class="space-y-1">
-              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Nome de Batismo</label>
-              <input class="w-full bg-transparent px-0 py-1 text-sm font-medium outline-none" type="text">
-              <!-- Espaço de 3cm para contas -->
-              <div class="mt-2 relative bg-stone-50/30">
-                <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Cálculos</span>
-                <textarea style="border: 2px dashed #d3ccc5 !important;" class="w-full rounded-lg p-3 pt-6 text-sm bg-transparent outline-none"></textarea>
-              </div>
+            <div class="textarea-wrap">
+              <span class="float-label">Cálculos</span>
+              <textarea></textarea>
             </div>
           </div>
-          <div class="flex flex-col gap-4 pt-10">
-            <div class="space-y-1">
-              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data do Atendimento</label>
-              <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
+          <div class="datas-col">
+            <div class="field">
+              <label>Data do Atendimento</label>
+              <input type="text" placeholder="___ / ___ / _____">
             </div>
-            <div class="space-y-1">
-              <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Data de Nascimento</label>
-              <input class="w-full bg-transparent px-0 py-1 text-sm tracking-[0.2em] outline-none" placeholder="___ /___ /_____ " type="text">
+            <div class="field">
+              <label>Data de Nascimento</label>
+              <input type="text" placeholder="___ / ___ / _____">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Seção 2: NUMEROLOGIA & LEITURA -->
-      <div class="grid grid-cols-2 gap-8 mb-6">
+      <!-- 02 + 03 -->
+      <div class="grid-2 section">
         <div>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">02</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
+          <div class="section-header">
+            <span class="section-num">02</span>
+            <span class="section-title">Numerologia</span>
           </div>
-          <div class="grid grid-cols-3 gap-4">
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Alma</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Pers.</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Destino</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
+          <div class="grid-3">
+            <div class="card"><span class="card-label">Alma</span><input type="text"></div>
+            <div class="card"><span class="card-label">Pers.</span><input type="text"></div>
+            <div class="card"><span class="card-label">Destino</span><input type="text"></div>
           </div>
         </div>
         <div>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">03</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
+          <div class="section-header">
+            <span class="section-num">03</span>
+            <span class="section-title">Leitura</span>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Lição de Vida</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Ano Pessoal</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
+          <div class="grid-2">
+            <div class="card"><span class="card-label">Lição de Vida</span><input type="text"></div>
+            <div class="card"><span class="card-label">Ano Pessoal</span><input type="text"></div>
           </div>
         </div>
       </div>
 
-      <!-- Seção 4: PLANOS DE CONSCIÊNCIA -->
-      <div class="mb-6">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-2xl font-light text-rose-700">04</span>
-          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Planos de Consciência</h2>
+      <!-- 04 PLANOS -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <span class="section-title">Planos de Consciência</span>
         </div>
-        <div class="grid grid-cols-4 gap-3">
-          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Mental [1, 8]</p>
-            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-          </div>
-          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Emoc. [2, 3, 6]</p>
-            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-          </div>
-          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Físico [4, 5]</p>
-            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-          </div>
-          <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Espirit. [7, 9]</p>
-            <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-          </div>
+        <div class="grid-4">
+          <div class="card"><span class="card-label">Mental [1, 8]</span><input type="text"></div>
+          <div class="card"><span class="card-label">Emoc. [2, 3, 6]</span><input type="text"></div>
+          <div class="card"><span class="card-label">Físico [4, 5]</span><input type="text"></div>
+          <div class="card"><span class="card-label">Espirit. [7, 9]</span><input type="text"></div>
         </div>
       </div>
 
-      <!-- Seção 5 & 6: KARMA/DARMA & PINÁCULOS -->
-      <div class="space-y-6 mb-6">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">05</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Karma</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">Darma</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-          </div>
+      <!-- 05 KARMA -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <span class="section-title">Karma e Darma</span>
         </div>
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-2xl font-light text-rose-700">06</span>
-            <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
-          </div>
-          <div class="grid grid-cols-4 gap-2">
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">1º</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">2º</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">3º</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-            <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
-              <p class="text-[11px] text-primary font-black tracking-widest uppercase">4º</p>
-              <input type="text" class="w-full text-center text-xs font-bold bg-transparent outline-none">
-            </div>
-          </div>
+        <div class="grid-2">
+          <div class="card"><span class="card-label">Karma</span><input type="text"></div>
+          <div class="card"><span class="card-label">Darma</span><input type="text"></div>
         </div>
       </div>
 
-      <!-- Seção 07: ANOTAÇÕES GERAIS -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-2xl font-light text-rose-700">07</span>
-          <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Anotações Gerais</h2>
+      <!-- 06 PINÁCULOS -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <span class="section-title">Pináculos</span>
         </div>
-        <div class="relative bg-stone-50/30">
-          <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Anotações...</span>
-          <textarea class="w-full p-3 pt-6 text-sm bg-transparent outline-none"></textarea>
+        <div class="grid-4">
+          <div class="card"><span class="card-label">1º</span><input type="text"></div>
+          <div class="card"><span class="card-label">2º</span><input type="text"></div>
+          <div class="card"><span class="card-label">3º</span><input type="text"></div>
+          <div class="card"><span class="card-label">4º</span><input type="text"></div>
         </div>
       </div>
 
-      <!-- FOOTER DENTRO DO page-inner (CORRIGIDO) -->
-      <div class="page-footer text-[7px] font-bold uppercase text-stone-300 flex justify-between">
-        <span>Confidencial</span>
-        <span>Página 1 de 2</span>
+      <!-- 07 ANOTAÇÕES -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <span class="section-title">Anotações Gerais</span>
+        </div>
+        <div class="textarea-wrap">
+          <span class="float-label">Anotações...</span>
+          <textarea></textarea>
+        </div>
       </div>
 
     </div>
-  </section>
+    <div class="page-footer">
+      <span>Confidencial</span><span>Página 1 de 2</span>
+    </div>
+  </div>
 
-  <!-- PÁGINA 2: CHAKRAS -->
-  <section class="assessment-page">
-    <div class="page-inner">
 
-      <div class="text-center mb-8">
-        <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
-        <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>
+  <!-- ===== PÁGINA 2 — CHAKRAS ===== -->
+  <div class="page">
+    <div class="page-content">
+
+      <div class="chakra-page-title">
+        <h2>Análise Energética — Chakras</h2>
+        <div class="divider"></div>
       </div>
 
-      <div class="space-y-4">
-
-        <!-- Coronário -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" class="w-10 h-10 object-contain" alt="Coronário">
-            <span class="text-xs font-black uppercase tracking-widest">Coronário</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c1" class="w-4 h-4"> Em Desenv.</label>
-          </div>
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/Vs1dW6X/1-coronario.png" alt="Coronário">
+          <span class="chakra-name">Coronário</span>
         </div>
-
-        <!-- Frontal -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" class="w-10 h-10 object-contain" alt="Frontal">
-            <span class="text-xs font-black uppercase tracking-widest">Frontal</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c2" class="w-4 h-4"> Em Desenv.</label>
-          </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c1"> Equilibrado</label>
+          <label><input type="radio" name="c1"> Desequilíbrio</label>
+          <label><input type="radio" name="c1"> Em Desenv.</label>
         </div>
-
-        <!-- Laríngeo -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" class="w-10 h-10 object-contain" alt="Laríngeo">
-            <span class="text-xs font-black uppercase tracking-widest">Laríngeo</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c3" class="w-4 h-4"> Em Desenv.</label>
-          </div>
-        </div>
-
-        <!-- Cardíaco -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" class="w-10 h-10 object-contain" alt="Cardíaco">
-            <span class="text-xs font-black uppercase tracking-widest">Cardíaco</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c4" class="w-4 h-4"> Em Desenv.</label>
-          </div>
-        </div>
-
-        <!-- Plexo Solar -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" class="w-10 h-10 object-contain" alt="Plexo Solar">
-            <span class="text-xs font-black uppercase tracking-widest">Plexo Solar</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c5" class="w-4 h-4"> Em Desenv.</label>
-          </div>
-        </div>
-
-        <!-- Esplênico -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" class="w-10 h-10 object-contain" alt="Esplênico">
-            <span class="text-xs font-black uppercase tracking-widest">Esplênico</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c6" class="w-4 h-4"> Em Desenv.</label>
-          </div>
-        </div>
-
-        <!-- Básico -->
-        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
-          <div class="flex items-center gap-3 mb-3">
-            <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" class="w-10 h-10 object-contain" alt="Básico">
-            <span class="text-xs font-black uppercase tracking-widest">Básico</span>
-          </div>
-          <div class="grid grid-cols-3 gap-4">
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Equilibrado</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Desequilíbrio</label>
-            <label class="flex items-center gap-2 text-[10px] uppercase font-bold"><input type="radio" name="c7" class="w-4 h-4"> Em Desenv.</label>
-          </div>
-        </div>
-
       </div>
 
-      <!-- FOOTER DENTRO DO page-inner (CORRIGIDO) -->
-      <div class="page-footer text-[7px] font-bold uppercase text-stone-300 flex justify-between">
-        <span>Confidencial</span>
-        <span>Página 2 de 2</span>
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/xKNqLz36/2-frontal.png" alt="Frontal">
+          <span class="chakra-name">Frontal</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c2"> Equilibrado</label>
+          <label><input type="radio" name="c2"> Desequilíbrio</label>
+          <label><input type="radio" name="c2"> Em Desenv.</label>
+        </div>
+      </div>
+
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/xq7r2nQg/3-laringeo.png" alt="Laríngeo">
+          <span class="chakra-name">Laríngeo</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c3"> Equilibrado</label>
+          <label><input type="radio" name="c3"> Desequilíbrio</label>
+          <label><input type="radio" name="c3"> Em Desenv.</label>
+        </div>
+      </div>
+
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/qFBJtLS7/4-cardiaco.png" alt="Cardíaco">
+          <span class="chakra-name">Cardíaco</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c4"> Equilibrado</label>
+          <label><input type="radio" name="c4"> Desequilíbrio</label>
+          <label><input type="radio" name="c4"> Em Desenv.</label>
+        </div>
+      </div>
+
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/LzS9tTkv/5-plexo-solar.png" alt="Plexo Solar">
+          <span class="chakra-name">Plexo Solar</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c5"> Equilibrado</label>
+          <label><input type="radio" name="c5"> Desequilíbrio</label>
+          <label><input type="radio" name="c5"> Em Desenv.</label>
+        </div>
+      </div>
+
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/LXfy4DFW/6-espl-nico.png" alt="Esplênico">
+          <span class="chakra-name">Esplênico</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c6"> Equilibrado</label>
+          <label><input type="radio" name="c6"> Desequilíbrio</label>
+          <label><input type="radio" name="c6"> Em Desenv.</label>
+        </div>
+      </div>
+
+      <div class="chakra-card">
+        <div class="chakra-header">
+          <img src="https://i.ibb.co/8g4nnQvh/7-basico.png" alt="Básico">
+          <span class="chakra-name">Básico</span>
+        </div>
+        <div class="chakra-options">
+          <label><input type="radio" name="c7"> Equilibrado</label>
+          <label><input type="radio" name="c7"> Desequilíbrio</label>
+          <label><input type="radio" name="c7"> Em Desenv.</label>
+        </div>
       </div>
 
     </div>
-  </section>
+    <div class="page-footer">
+      <span>Confidencial</span><span>Página 2 de 2</span>
+    </div>
+  </div>
 
 </main>
 </body>

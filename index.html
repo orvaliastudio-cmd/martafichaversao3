@@ -33,28 +33,44 @@
     <style>
         @page {
             size: A4;
-            margin: 0;
+            margin: 0mm;
         }
 
         @media print {
+            *, ::before, ::after {
+                box-sizing: border-box !important;
+            }
             .no-print { display: none !important; }
-            body { background: white !important; margin: 0 !important; padding: 0 !important; }
+            html, body { 
+                background: white !important; 
+                margin: 0 !important; 
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact;
+            }
+            main {
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+            }
             .assessment-page { 
                 box-shadow: none !important; 
                 margin: 0 !important;
                 padding: 1.5cm !important;
                 width: 210mm !important;
                 height: 297mm !important;
-                min-height: 297mm !important;
                 border: none !important;
                 page-break-after: always !important;
                 break-after: page !important;
                 position: relative;
                 overflow: hidden;
+                box-sizing: border-box !important;
+                display: flex !important;
+                flex-direction: column !important;
             }
             .assessment-page:last-child {
-                page-break-after: auto !important;
-                break-after: auto !important;
+                page-break-after: avoid !important;
+                break-after: avoid !important;
             }
         }
 
@@ -106,10 +122,10 @@
 
     <main class="max-w-3xl mx-auto py-8 px-4 space-y-8 print:space-y-0 print:py-0 print:px-0">
         <!-- PÁGINA 1: NUMEROLOGIA COMPLETA -->
-        <section class="assessment-page bg-white p-6 shadow-md min-h-[1050px] flex flex-col rounded-sm border border-stone-100">
+        <section class="assessment-page bg-white p-6 shadow-md flex flex-col rounded-sm border border-stone-100">
             <!-- Header -->
             <div class="text-center mb-6">
-                <img alt="Logo" class="h-20 mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
+                <img alt="Logo" class="h-[92px] mx-auto object-contain mb-2" src="https://i.ibb.co/rfpdr7mk/marta-perfil-fundo-transparente.png" referrerPolicy="no-referrer">
                 <div class="w-20 h-[1px] bg-stone-200 mx-auto mt-1"></div>
             </div>
 
@@ -123,10 +139,11 @@
                         </div>
                         <div class="space-y-1">
                             <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest">Nome de Batismo</label>
-                            <input class="w-full border-b-2 border-stone-400 bg-transparent px-0 py-1 text-sm font-medium outline-none" type="text">
+                            <input class="w-full border-b border-stone-400 bg-transparent px-0 py-1 text-sm font-medium outline-none" type="text">
                             <!-- Espaço de 3cm para contas -->
-                            <div class="h-[113px] border-2 border-dashed border-stone-200 rounded-lg mt-2 relative bg-stone-50/30">
-                                <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold">Cálculos</span>
+                            <div class="mt-2 relative bg-stone-50/30">
+                                <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Cálculos</span>
+                                <textarea class="w-full h-[113px] border-2 border-dashed border-stone-200 rounded-lg p-3 pt-6 text-sm bg-transparent resize-none outline-none"></textarea>
                             </div>
                         </div>
                     </div>
@@ -151,17 +168,17 @@
                         <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Numerologia</h2>
                     </div>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Alma</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Alma</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Pers.</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Pers.</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Destino</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Destino</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
                     </div>
                 </div>
@@ -171,13 +188,13 @@
                         <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Leitura</h2>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Lição de Vida</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Lição de Vida</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Ano Pessoal</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Ano Pessoal</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
                     </div>
                 </div>
@@ -210,20 +227,20 @@
             </div>
 
             <!-- Seção 5 & 6: KARMA/DARMA & PINÁCULOS -->
-            <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-6 mb-6">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-2xl font-light text-stone-200">05</span>
                         <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Karma e Darma</h2>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Karma</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Karma</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1 text-center">Darma</label>
-                            <input class="border-b-2 border-stone-400 text-center text-base font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">Darma</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
                     </div>
                 </div>
@@ -233,23 +250,35 @@
                         <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Pináculos</h2>
                     </div>
                     <div class="grid grid-cols-4 gap-2">
-                        <div class="flex flex-col">
-                            <label class="text-[8px] text-stone-500 font-bold uppercase mb-1 text-center">1º</label>
-                            <input class="border-b-2 border-stone-400 text-center text-sm font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">1º</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[8px] text-stone-500 font-bold uppercase mb-1 text-center">2º</label>
-                            <input class="border-b-2 border-stone-400 text-center text-sm font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">2º</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[8px] text-stone-500 font-bold uppercase mb-1 text-center">3º</label>
-                            <input class="border-b-2 border-stone-400 text-center text-sm font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">3º</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
-                        <div class="flex flex-col">
-                            <label class="text-[8px] text-stone-500 font-bold uppercase mb-1 text-center">4º</label>
-                            <input class="border-b-2 border-stone-400 text-center text-sm font-bold py-2 bg-transparent outline-none" type="text">
+                        <div class="bg-stone-50 p-2 rounded-lg border border-stone-200 flex flex-col items-center gap-1">
+                            <p class="text-[11px] text-primary font-black tracking-widest uppercase">4º</p>
+                            <input type="text" class="w-full border-b-2 border-stone-400 text-center text-xs font-bold bg-transparent outline-none">
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Seção 07: ANOTAÇÕES GERAIS -->
+            <div class="flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl font-light text-stone-200">07</span>
+                    <h2 class="text-primary font-bold text-xs tracking-[0.15em] uppercase">Anotações Gerais</h2>
+                </div>
+                <div class="relative bg-stone-50/30">
+                    <span class="absolute top-2 left-3 text-[8px] text-stone-400 uppercase tracking-widest font-bold pointer-events-none">Anotações...</span>
+                    <textarea class="w-full h-32 border-2 border-stone-200 rounded-lg p-3 pt-6 text-sm bg-transparent resize-none outline-none"></textarea>
                 </div>
             </div>
 
@@ -260,7 +289,7 @@
         </section>
 
         <!-- PÁGINA 2: CHAKRAS -->
-        <section class="assessment-page bg-white p-8 shadow-md min-h-[1050px] flex flex-col rounded-sm border border-stone-100">
+        <section class="assessment-page bg-white p-8 shadow-md flex flex-col rounded-sm border border-stone-100">
             <div class="text-center mb-8">
                 <h2 class="text-primary font-bold text-lg tracking-[0.3em] uppercase">Análise Energética — Chakras</h2>
                 <div class="w-24 h-1 bg-stone-100 mx-auto mt-3"></div>
